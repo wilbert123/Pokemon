@@ -1,0 +1,33 @@
+name: iOS Build
+
+on:
+  # Dispara el pipeline cuando se hace push a la rama main o
+  # cuando se abre un pull request hacia main
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    # GitHub Actions proporciona máquinas macOS para compilar iOS
+    runs-on: macos-12
+
+    steps:
+      # 1) Checkout del repositorio
+      - name: Check out source code
+        uses: actions/checkout@v4
+
+      - name: Install Dependencies
+        run: pod install --project-directory=PokemonSwiftUI
+
+      # 3) Construir la aplicación
+      - name: Build iOS Project
+        run: |
+          xcodebuild \
+            -project PokemonSwiftUI.xcodeproj \
+            -scheme PokemonSwiftUI \
+            -sdk iphonesimulator \
+            -configuration Debug \
+            build
+
