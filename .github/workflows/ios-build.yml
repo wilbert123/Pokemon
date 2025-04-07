@@ -18,9 +18,6 @@ jobs:
       - name: Check out source code
         uses: actions/checkout@v4
 
-      - name: Install Dependencies
-        run: pod install --project-directory=PokemonSwiftUI
-
       # 3) Construir la aplicación
       - name: Build iOS Project
         run: |
