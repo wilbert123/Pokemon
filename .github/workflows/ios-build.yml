@@ -11,7 +11,7 @@ on:
 jobs:
   build:
     # GitHub Actions proporciona máquinas macOS para compilar iOS
-    runs-on: macos-12
+    runs-on: macos-latest
 
     steps:
       # 1) Checkout del repositorio
