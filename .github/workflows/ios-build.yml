@@ -26,5 +26,14 @@ jobs:
             -scheme PokemonSwiftUI \
             -sdk iphonesimulator \
             -configuration Debug \
+            -derivedDataPath build \
             build
+
+      - name: Upload .app as artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: PokemonApp-Debug
+          path: build/Build/Products/Debug-iphonesimulator/PokemonSwiftUI.app
+
+
 
